@@ -1,6 +1,7 @@
 Friends list. Age calculation.
 
-![FriendList_Er](https://github.com/user-attachments/assets/fe7f0c9c-ca4d-4623-8fe2-c4cd5a584789)
+<img width="332" height="700" alt="FriendList1" src="https://github.com/user-attachments/assets/880ea315-4348-47f5-8593-4ca144acd357" />
+
 
 The data is saved in the folder:
 
