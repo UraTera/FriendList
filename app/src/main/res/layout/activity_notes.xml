@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotesActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/todo"
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/tvTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imHome"
+            android:layout_toStartOf="@+id/imSave"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="Note"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerVertical="true"
+            tools:ignore="HardcodedText,RelativeOverlap,RtlSymmetry,TextContrastCheck" />
+<!--        android:fontFamily="@font/nexa_script_light"/>-->
+
+        <ImageView
+            android:id="@+id/imSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/save"
+            android:padding="12dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_save_block"
+            tools:ignore="ImageContrastCheck" />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edNote"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:autofillHints=""
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:hint="@string/input_text"
+        android:inputType="text|textCapSentences|textMultiLine"
+        android:textColor="@color/black"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:ignore="HardcodedText,VisualLintTextFieldSize" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

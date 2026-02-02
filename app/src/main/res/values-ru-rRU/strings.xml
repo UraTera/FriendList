@@ -1,0 +1,81 @@
+<resources>
+<!--    <string name="app_name">Калькулятор возраста</string>-->
+    <string name="app_name">Друзья</string>
+    <string name="save">Сохранить</string>
+    <string name="open">Открыть</string>
+    <string name="hide_zeros">Скрыть ведущие нули</string>
+
+    <string name="error_save">Ошибка сохранения файла</string>
+    <string name="file_save">Файл сохранен</string>
+    <string name="error_open">Ошибка открытия файла</string>
+    <string name="delete">Удалить</string>
+    <string name="mess1">Вы уверены, что хотите удалить запись</string>
+    <string name="mess2">Вы уверены, что хотите удалить записи</string>
+    <string name="cancel">Отмена</string>
+    <string name="file_copy">Файл скопирован</string>
+    <string name="error_copy">Ошибка копирования</string>
+    <string name="error_save_image">Ошибка сохранения изображения</string>
+
+
+    <!-- DialogAdd -->
+    <string name="edit">Изменить запись</string>
+    <string name="add">Добавить запись</string>
+    <string name="select_photo">Выберите\n фото</string>
+    <string name="d_m_y">дд.мм.гггг</string>
+    <string name="errorName">Поле должно быть заполнено</string>
+    <string name="name">Имя</string>
+    <string name="date_death">Дата смерти</string>
+    <string name="died_bn">Умер</string>
+
+    <!-- AdapterPerson -->
+    <string name="date_birth">Дата рождения:</string>
+    <string name="died">Умер:</string>
+
+    <!-- AgeCalculator-->
+    <string name="age">Возраст:</string>
+    <string name="was">Было:</string>
+    <string name="passed">Прошло:</string>
+    <string name="left">До дня рождения</string>
+    <string name="today">Сегодня день рождения.</string>
+
+    <string name="d1">день</string>
+    <string name="d2">дня</string>
+    <string name="d5">дней</string>
+
+    <string name="m1">месяц</string>
+    <string name="m2">месяца</string>
+    <string name="m5">месяцев</string>
+
+    <string name="y1">год</string>
+    <string name="y2">года</string>
+    <string name="y5">лет</string>
+
+
+    <!-- Ошибки ввода inputDate-->
+    <string name="error_d0">День не может быть нулевым</string>
+    <string name="error_31">Дней не может быть больше 31</string>
+    <string name="error_m0">Месяц не может быть нулевой</string>
+    <string name="error_12">Месяцев не может быть больше 12</string>
+    <string name="error_0">Год не может начинаться с 0</string>
+    <string name="error_3">Год не может начинаться с 3</string>
+    <string name="error_date_after">Введенная дата после текущей</string>
+    <string name="error_other">Не корректные данные</string>
+
+    <!-- Ошибки поля даты checkDate-->
+    <string name="error_mon_empty">Не введен месяц</string>
+    <string name="error_y4">Год должен содержать 4 символа</string>
+    <string name="error_enter_y">Введите год</string>
+    <string name="error_date_death">Дата смерти раньше даты рождения</string>
+    <string name="separator">.</string>
+
+    <!-- TextWatcherDate -->
+    <string name="template">XX.XX.XXXX</string>
+
+    <!-- NotesActivity-->
+    <string name="input_text">Введите текст</string>
+    <string name="changes_made">Сделаны изменения</string>
+    <string name="save_changes">Сохранить изменения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+</resources>

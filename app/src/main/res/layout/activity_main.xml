@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tera.friendlist.MainActivity">
+<!--    tools:openDrawer="start">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/todo"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="12dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/imMenu"
+                android:fontFamily="@font/nice_script_light"
+                android:paddingStart="0dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RelativeOverlap,RtlSymmetry,TextContrastCheck" />
+
+            <FrameLayout
+                android:id="@+id/fmPlus"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/imAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:padding="12dp"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/ic_add_write"
+                    tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+                <com.tera.checkbox.CheckBox
+                    android:id="@+id/chSelectAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:check_checked="false"
+                    android:visibility="invisible"
+                    app:button_checkedColor="#3BFFCB"
+                    app:button_uncheckedColor="@color/white"
+                    app:tick_checkedColor="@color/black"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fmMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/fmPlus">
+
+                <ImageView
+                    android:id="@+id/imMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:padding="12dp"
+                    app:srcCompat="@drawable/ic_remove_write"
+                    tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/imDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:padding="12dp"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/ic_delete"
+                    tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/imEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/fmMinus"
+                android:contentDescription="@string/todo"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_edit_write"
+                tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/imNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/imEdit"
+                android:contentDescription="@string/todo"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_edit_note_write"
+                tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:contentDescription="@string/todo"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:srcCompat="@drawable/forest"
+            tools:ignore="ImageContrastCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcPerson"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_person" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nvNavigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="start"
+        tools:ignore="VisualLintBounds">
+
+        <CheckBox
+            android:id="@+id/ckHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/hide_zeros" />
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
