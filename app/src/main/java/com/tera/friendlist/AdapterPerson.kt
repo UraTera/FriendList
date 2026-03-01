@@ -32,6 +32,8 @@ class AdapterPerson(
     private val listener: AdapterClickListener
 ) : RecyclerView.Adapter<AdapterPerson.ViewHolder>() {
 
+    private val selectDel = ArrayList<Int>()
+
     class ViewHolder(
         view: View,
         private val context: Context
@@ -117,8 +119,6 @@ class AdapterPerson(
 
             }
             tvLeft.text = dayLeft
-
-//            chDelete.isChecked = item.keyDel
         }
     }
 
@@ -131,8 +131,6 @@ class AdapterPerson(
     override fun getItemCount(): Int {
         return list.size
     }
-
-    private val selectDel = ArrayList<Int>()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
@@ -148,21 +146,19 @@ class AdapterPerson(
             chDelete.isVisible = keyDeleteVisi
             imEdit.isVisible = keyEditVisi
             imNote.isVisible = keyNoteVisi
+            chDelete.isChecked = item.keyDel
 
             imEdit.setOnClickListener {
                 listener.onItemClickEdit(position)
             }
 
-            var key = item.keyDel
-            chDelete.isChecked = key
-
-            if (key) root.setBackgroundColor(colorSel)
-            else root.setBackgroundColor(colorItem)
-
             // Выбрать элементы для удаления
-            chDelete.setOnClickListener {
-                key = chDelete.isChecked
-                list[position].keyDel = key
+            chDelete.setOnCheckedChangeListener { _, isChecked ->
+
+                if (isChecked) root.setBackgroundColor(colorSel)
+                else root.setBackgroundColor(colorItem)
+
+                list[position].keyDel = isChecked
                 selectDel.clear()
                 // Выбранные позиции
                 if (list.isNotEmpty()) {
@@ -174,9 +170,6 @@ class AdapterPerson(
                         }
                     }
                 }
-                if (key) root.setBackgroundColor(colorSel)
-                else root.setBackgroundColor(colorItem)
-
                 listener.onItemClickDelete(selectDel)
             }
 

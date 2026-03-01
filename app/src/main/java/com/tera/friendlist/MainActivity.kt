@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity(),
         openList()
 
         val keySave = intent.getBooleanExtra(MyConst.KEY_SAVE, false)
-        if (keySave){
+        if (keySave) {
             val note = intent.getStringExtra(MyConst.NOTE) ?: ""
             val pos = intent.getIntExtra(MyConst.POS_NOTE, 0)
             listPerson[pos].note = note
@@ -279,15 +279,13 @@ class MainActivity : AppCompatActivity(),
     }
 
     // Видимость кнопок
-    private fun setVisible() {
-        with(binding) {
-            if (listDel.isNotEmpty()) {
-                imMinus.isVisible = false
-                imDelete.isVisible = true
-            } else {
-                imMinus.isVisible = true
-                imDelete.isVisible = false
-            }
+    private fun setVisible() = with(binding) {
+        if (listDel.isNotEmpty()) {
+            imMinus.isVisible = false
+            imDelete.isVisible = true
+        } else {
+            imMinus.isVisible = true
+            imDelete.isVisible = false
         }
     }
 

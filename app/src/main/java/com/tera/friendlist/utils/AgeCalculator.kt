@@ -222,7 +222,6 @@ class AgeCalculator(private val context: Context) {
     // До дня рождения осталось
     fun dayLeft(birthDate: String): String {
         if (birthDate.isEmpty()) return ""
-//        return ""
         val date = showZero(birthDate)
         val left = context.getString(R.string.left)
         val day = date.take(2)
