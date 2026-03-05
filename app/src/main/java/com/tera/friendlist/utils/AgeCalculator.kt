@@ -62,7 +62,7 @@ class AgeCalculator(private val context: Context) {
     // Возраст
     fun getAge(birthDate: String, deathDate: String): String {
         if (birthDate.isEmpty()) return ""
-//        Log.d("mylogs", "getAge, deathDate: $deathDate")
+        //Log.d("mylogs", "getAge, birthDate: $birthDate")
 
         // Возраст покойного
         if (deathDate.isNotEmpty()) {
@@ -79,9 +79,24 @@ class AgeCalculator(private val context: Context) {
         val from = LocalDate.parse(date, formatter)
         val to = LocalDate.parse(currentDate, formatter)
         val period = Period.between(from, to)
-        val age = period.years
 
-        return "$ageStr ${ageDeclension(age)}"
+        val years = period.years
+        val months = period.months
+        val days = period.days
+        var age: String
+
+        //Log.d("mylogs", "getAge, years: $years, months: $months, days: $days")
+
+        if (years > 0) {
+            age = ageDeclension(years)
+        } else if (months > 0 && days > 0) {
+            age = "${monDeclension(months)}, ${dayDeclension(days)}"
+        }  else if (months > 0) {
+            age = monDeclension(months)
+        } else
+            age = dayDeclension(days)
+
+        return "$ageStr ${(age)}"
     }
 
     // Возраст покойного
@@ -200,10 +215,10 @@ class AgeCalculator(private val context: Context) {
     // Склонение месяцев
     private fun monDeclension(mon: Int): String =
         when {
-            mon % 100 in 11..14 -> m5
-            mon % 10 == 1 -> m1
-            mon % 10 in 2..4 -> m2
-            else -> m5
+            mon % 100 in 11..14 -> "$mon $m5"
+            mon % 10 == 1 -> "$mon $m1"
+            mon % 10 in 2..4 -> "$mon $m2"
+            else -> "$mon $m5"
         }
 
     private val y1 = context.getString(R.string.y1)
