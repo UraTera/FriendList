@@ -79,23 +79,7 @@ class AgeCalculator(private val context: Context) {
         val from = LocalDate.parse(date, formatter)
         val to = LocalDate.parse(currentDate, formatter)
         val period = Period.between(from, to)
-
-        val years = period.years
-        val months = period.months
-        val days = period.days
-        var age: String
-
-        //Log.d("mylogs", "getAge, years: $years, months: $months, days: $days")
-
-        if (years > 0) {
-            age = ageDeclension(years)
-        } else if (months > 0 && days > 0) {
-            age = "${monDeclension(months)}, ${dayDeclension(days)}"
-        }  else if (months > 0) {
-            age = monDeclension(months)
-        } else
-            age = dayDeclension(days)
-
+        val age: String = getPeriod(period)
         return "$ageStr ${(age)}"
     }
 
@@ -112,15 +96,14 @@ class AgeCalculator(private val context: Context) {
         val date1 = showZero(dateBirth)
         val date2 = showZero(dateDeath)
 
-        var yearsWasStr = ""
-        val wasStr = context.getString(R.string.was)
+        var age = ""
+        val was = context.getString(R.string.was)
         // Было
         try {
             val from = LocalDate.parse(date1, formatter)
             val to = LocalDate.parse(date2, formatter)
             val period = Period.between(from, to)
-            val yearsWas = period.years
-            yearsWasStr = ageDeclension(yearsWas)
+            age = getPeriod(period)
         } catch (e: IOException) {
             Log.d("mylogs", "ageDeceased, Error: $e")
         }
@@ -128,7 +111,7 @@ class AgeCalculator(private val context: Context) {
         // Прошло
         passed = goneSinceDeath(dateDeath)
 
-        return "$wasStr $yearsWasStr. $passed"
+        return "$was $age\n$passed"
     }
 
     // Прошло со дня смерти
@@ -195,11 +178,31 @@ class AgeCalculator(private val context: Context) {
         return false
     }
 
+    // Получить период
+    private fun getPeriod(period: Period ): String{
+        val years = period.years
+        val months = period.months
+        val days = period.days
+        var periodStr: String
+
+        if (years > 0) {
+            periodStr = ageDeclension(years)
+        } else if (months > 0 && days > 0) {
+            periodStr = "${monDeclension(months)}, ${dayDeclension(days)}"
+        }  else if (months > 0) {
+            periodStr = monDeclension(months)
+        } else
+            periodStr = dayDeclension(days)
+
+        //Log.d("mylogs", "getPeriod, periodStr: $periodStr")
+        return periodStr
+    }
+
+    // Склонение дней
     private val d1 = context.getString(R.string.d1)
     private val d2 = context.getString(R.string.d2)
     private val d5 = context.getString(R.string.d5)
 
-    // Склонение дней
     private fun dayDeclension(day: Int): String =
         when {
             day % 100 in 11..14 -> "$day $d5"

@@ -173,14 +173,16 @@ class AdapterPerson(
                 listener.onItemClickDelete(selectDel)
             }
 
+            // Кнопка
             imNote.setOnClickListener {
                 listener.onItemClickNote(position)
             }
 
-            holder.itemView.setOnClickListener {
-                if (!keyDeleteVisi && !keyEditVisi)
-                    listener.onItemClickNote(position)
-            }
+            // Строка
+//            holder.itemView.setOnClickListener {
+//                if (!keyDeleteVisi && !keyEditVisi)
+//                    listener.onItemClickNote(position)
+//            }
         }
     }
 
